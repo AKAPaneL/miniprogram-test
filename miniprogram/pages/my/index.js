@@ -1,7 +1,7 @@
 Page({
   goLogin() {
     wx.navigateTo({
-      url: '/pages/login/index',
+      url: '/pages/login/index'
     })
-  },
+  }
 })

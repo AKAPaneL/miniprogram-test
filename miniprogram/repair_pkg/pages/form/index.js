@@ -13,8 +13,8 @@ Page({
     repairItem: [{ name: '水路卫浴' }, { name: '电路灯具' }, { name: '管道疏通' }, { name: '开锁换锁' }],
     fileList: [
       { url: '/repair_pkg/static/uploads/attachment.jpg' },
-      { url: '/repair_pkg/static/uploads/attachment.jpg' },
-    ],
+      { url: '/repair_pkg/static/uploads/attachment.jpg' }
+    ]
   },
   openHouseLayer() {
     this.setData({ houseLayerVisible: true })
@@ -27,7 +27,7 @@ Page({
   },
   closeRepairLayer() {
     this.setData({
-      repairLayerVisible: false,
+      repairLayerVisible: false
     })
   },
 
@@ -39,7 +39,7 @@ Page({
   },
   goList() {
     wx.reLaunch({
-      url: '/repair_pkg/pages/list/index',
+      url: '/repair_pkg/pages/list/index'
     })
-  },
+  }
 })

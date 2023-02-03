@@ -2,6 +2,9 @@
   "name": "enjoy-plus",
   "version": "1.0.0",
   "description": "",
+  "scripts": {
+    "lint": "eslint --ext .js miniprogram --fix"
+  },
   "keywords": [],
   "author": "lotjol <botue@sina.com>",
   "repository": "lotjol/enjoy-plus",

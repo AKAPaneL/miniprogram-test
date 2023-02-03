@@ -1,7 +1,7 @@
 Page({
   goPassport() {
     wx.navigateTo({
-      url: '/visitor_pkg/pages/passport/index',
+      url: '/visitor_pkg/pages/passport/index'
     })
-  },
+  }
 })
