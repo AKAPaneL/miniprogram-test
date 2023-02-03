@@ -4,5 +4,11 @@ import './utils/utils'
 // 引入请求http封装
 import './utils/http'
 App({
-  globalData: {}
+  // 小程序启动初始化
+  onLaunch() {
+    this.getToken()
+  },
+  getToken() {
+    this.token = wx.getStorageSync('token');
+  }
 })
