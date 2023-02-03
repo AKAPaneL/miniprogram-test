@@ -24,7 +24,7 @@
       <text>公告</text>
     </view>
     <view class="notices-body">
-      <navigator wx:for="{{notifyList}}" wx:key="id" hover-class="none" url="/pages/notify/index" class="notice">
+      <navigator wx:for="{{notifyList}}" wx:key="id" hover-class="none" url="{{'/pages/notify/index?id=' + item.id}}" class="notice">
         <view class="notice-title">{{item.title}}</view>
         <view class="notice-brief">{{item.content}}</view>
         <view class="notice-date">{{item.createdAt}}</view>

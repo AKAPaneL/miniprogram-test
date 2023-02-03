@@ -5,14 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    notifyDetail: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  onLoad({id}) {
+    // 默认情况下, onLoad 的参数会获取一个对象, 是上一个页面传入的?查询字符串
+    // 这里我们只用到其中的 id 属性, 所以可以解构
+    console.log('详情页', id);
+    this.getNotifyDetail(id)
+  },
 
+  async getNotifyDetail(id) {
+    // 发送请求
+    const {code, data: notifyDetail} = await wx.http.get(`/announcement/${id}`)
+    // 检查报错
+    if(code !== 10000) return wx.utils.toast()
+    // 赋值data
+    this.setData({
+      notifyDetail
+    })
   },
 
   /**
