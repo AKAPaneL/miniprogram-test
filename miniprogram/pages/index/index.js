@@ -1,1 +1,5 @@
-Page({})
+Page({
+  onLoad() {
+    wx.utils.toast()
+  }
+})
