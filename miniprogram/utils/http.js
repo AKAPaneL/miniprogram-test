@@ -24,6 +24,21 @@ http.intercept.request = config => {
 http.intercept.response = async res => {
   // 有可能 token 失效得到401报错
   if (res.statusCode === 401) {
+
+    // 401 不一定都可以更新数据, 还有可能已经在更新不断401
+    // 如果发现已经在更新, 但是没法更新成功, 救不了了, 放弃吧
+    // 直接返回跳到登录页
+    if (res.config.url.includes('/refreshToken')) {
+      // 取出当前页地址, 强制返回, 并退出到登录页
+      const pageStack = getCurrentPages()
+      const currentPage = pageStack[pageStack.length - 1]
+      const url = currentPage.route
+
+      return wx.redirectTo({
+        url: `/pages/login/index?redirectURL=/${url}`
+      })
+    }
+
     // 刷新token
     const refreshToken = getApp().refreshToken
     // console.log(refreshToken);
