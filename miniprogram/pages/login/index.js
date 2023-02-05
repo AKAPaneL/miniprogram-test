@@ -2,7 +2,7 @@ Page({
   data: {
     countDownVisible: false,
     mobile: '',
-    code: ''
+    code: '123456'
   },
 
   onLoad({redirectURL}) {
