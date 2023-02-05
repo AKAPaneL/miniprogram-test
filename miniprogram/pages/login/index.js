@@ -19,13 +19,13 @@ Page({
 
     return isValid
   },
-  getCode() {
+  async getCode() {
     // 1. 获取用户输入手机号 双向绑定即可
     // 2. 校验
     const isValid = this.verifyMobile()
     // 3. 校验成功, 就发请求得到验证码
     if (isValid) {
-      const {code} = wx.http({
+      const {code} = await wx.http({
         url: `/code?mobile=${this.data.mobile}`
       })
       if(code !== 10000) {
