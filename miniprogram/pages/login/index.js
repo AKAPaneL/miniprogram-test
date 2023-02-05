@@ -5,12 +5,18 @@ Page({
     code: ''
   },
 
+  onLoad({redirectURL}) {
+    // 因为无需渲染, 只是临时记录数据, 所以可以直接挂在 this 上面
+    this.redirectURL = redirectURL
+  },
+
   countDownChange(ev) {
     this.setData({
       timeData: ev.detail,
       countDownVisible: ev.detail.minutes === 1 || ev.detail.seconds > 0
     })
   },
+  // 验证手机号
   verifyMobile() {
     // 因为获取验证码和登录都需要验证, 可以考虑封装
     const pattern = /^1[3-9][0-9]{9}$/
@@ -20,6 +26,15 @@ Page({
 
     return isValid
   },
+  // 校验验证码
+  verifyCode() {
+    const pattern = /^[0-9]{6}$/
+    const isValid = pattern.test(this.data.code)
+    if(!isValid) wx.utils.toast('请输入正确验证码')
+
+    return isValid
+  },
+  // 获取验证码
   async getCode() {
     // 1. 获取用户输入手机号 双向绑定即可
     // 2. 校验
@@ -40,5 +55,29 @@ Page({
 
       
     }
+  },
+  // 提交表单登录/注册
+  async submitForm() {
+    // 验证手机号, 验证码
+    if(!this.verifyMobile()) return
+    if(!this.verifyCode()) return
+
+    // 发送请求
+    const {code, data} = await wx.http({
+      method: 'post',
+      url: '/login',
+      data: {
+        mobile: this.data.mobile,
+        code: this.data.code
+      }
+    })
+
+    console.log(code, data);
+    if(code !== 10000) return wx.utils.toast()
+
+    console.log('目的地', this.redirectURL);
+    wx.redirectTo({
+      url: this.redirectURL
+    })
   }
 })

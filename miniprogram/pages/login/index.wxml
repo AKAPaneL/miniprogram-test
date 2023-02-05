@@ -18,5 +18,5 @@
 </view>
 <view class="toolbar">
   <text class="enjoy-icon icon-right"></text>
-  <text class="button-text">登录</text>
+  <text class="button-text" bind:tap="submitForm">登录</text>
 </view>
