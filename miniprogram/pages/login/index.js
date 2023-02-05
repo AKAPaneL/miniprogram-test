@@ -1,7 +1,7 @@
 Page({
   data: {
     countDownVisible: false,
-    mobile: '',
+    mobile: '13541232145',
     code: '123456'
   },
 
@@ -79,9 +79,11 @@ Page({
     // 登录成功->跳转页面之间, 要把token记下来
     // 将token记录下来, 然后跳转
     const app = getApp()
-    app.token = data.token
-    // 存起来, 方便下次进入小程序使用
-    wx.setStorageSync('token', data.token);
+    // app.token = data.token
+    // // 存起来, 方便下次进入小程序使用
+    // wx.setStorageSync('token', data.token);
+    // 已经封装了全局函数, 无需在这里写了
+    app.setToken(data.token, data.refreshToken)
       
 
     wx.redirectTo({
