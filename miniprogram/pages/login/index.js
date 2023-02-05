@@ -76,6 +76,7 @@ Page({
     if(code !== 10000) return wx.utils.toast()
 
     console.log('目的地', this.redirectURL);
+    // 登录成功->跳转页面之间, 要把token记下来
     // 将token记录下来, 然后跳转
     const app = getApp()
     app.token = data.token
