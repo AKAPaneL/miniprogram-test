@@ -1,7 +1,8 @@
 Page({
   data: {
     countDownVisible: false,
-    mobile: ''
+    mobile: '',
+    code: ''
   },
 
   countDownChange(ev) {

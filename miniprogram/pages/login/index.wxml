@@ -12,7 +12,7 @@
         </van-count-down>
       </view>
     </van-field>
-    <van-field placeholder="请输入6位验证码" placeholder-style="color: #979797" />
+    <van-field model:value="{{code}}" placeholder="请输入6位验证码" placeholder-style="color: #979797" />
   </van-cell-group>
   <view class="login-tips">未注册手机号经验证后将自动注册</view>
 </view>
