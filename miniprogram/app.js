@@ -10,6 +10,7 @@ App({
   },
   getToken() {
     this.token = wx.getStorageSync('token');
+    this.refreshToken = wx.getStorageSync('refreshToken');
   },
   setToken(token, refreshToken) {
     // 封装一个函数, 在全局当中
