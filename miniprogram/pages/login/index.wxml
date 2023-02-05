@@ -16,7 +16,7 @@
   </van-cell-group>
   <view class="login-tips">未注册手机号经验证后将自动注册</view>
 </view>
-<view class="toolbar">
+<view class="toolbar" bind:tap="submitForm">
   <text class="enjoy-icon icon-right"></text>
-  <text class="button-text" bind:tap="submitForm">登录</text>
+  <text class="button-text">登录</text>
 </view>

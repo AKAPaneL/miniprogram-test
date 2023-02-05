@@ -76,6 +76,13 @@ Page({
     if(code !== 10000) return wx.utils.toast()
 
     console.log('目的地', this.redirectURL);
+    // 将token记录下来, 然后跳转
+    const app = getApp()
+    app.token = data.token
+    // 存起来, 方便下次进入小程序使用
+    wx.setStorageSync('token', data.token);
+      
+
     wx.redirectTo({
       url: this.redirectURL
     })
