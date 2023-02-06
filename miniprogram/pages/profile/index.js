@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo: {}
+  },
 
+  async getUserNickName(event) {
+    console.log(event.detail.value);
+    const nickName = event.detail.value
+    // 失去焦点马上保存到服务器
+    const {code} = await wx.http.put('/userInfo', {nickName})
+
+    if(code !== 10000) return wx.utils.toast('更新失败')
+
+    this.setData({
+      'userInfo.nickName': nickName
+    })
   },
 
   /**
