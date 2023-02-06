@@ -3,6 +3,13 @@ Page({
     dialogVisible: false
   },
 
+  async onLoad() {
+    const res = await wx.http({
+      url: '/room'
+    })
+    console.log(res);
+  },
+
   swipeClose(ev) {
     const { position, instance } = ev.detail
 
