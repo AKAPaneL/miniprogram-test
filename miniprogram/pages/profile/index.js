@@ -53,8 +53,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  async onLoad() {
+    const {code, data: userInfo} = await wx.http({
+      url: '/userInfo'
+    })
 
+    if(code !== 10000) return wx.utils.toast()
+
+    this.setData({
+      userInfo
+    })
   },
 
   /**
