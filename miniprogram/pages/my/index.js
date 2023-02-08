@@ -1,20 +1,23 @@
 Page({
+
   data: {
     userInfo: {}
   },
+
   goLogin() {
     wx.navigateTo({
       url: '/pages/login/index'
     })
   },
-  onLoad() {
-  },
   async onShow() {
-    const res = await wx.http.get('/userInfo')
-    const { avatar, nickName } = res.data
+    const { code, data: userInfo } = await wx.http({
+      url: '/userInfo'
+    })
+
+    if (code !== 10000) return wx.utils.toast()
+
     this.setData({
-      'userInfo.avatar': avatar,
-      'userInfo.nickName': nickName
+      userInfo
     })
   }
 })

@@ -46,11 +46,48 @@ Page({
     })
   },
 
+  getUserAvatar(event) {
+    console.log(event.detail.avatarUrl);
+    const avatarUrl = event.detail.avatarUrl
+
+    wx.uploadFile({
+      url: wx.http.baseURL + '/upload',
+      filePath: avatarUrl,
+      name: 'file',
+      header: {
+        Authorization: `Bearer ${getApp().token}`
+      },
+      formData: {
+        type: 'avatar'
+      },
+      success: (res) => {
+        // console.log('上传成功');
+        // console.log(res);
+        // console.log(this.setData);
+        const data = JSON.parse(res.data)
+
+        if(data.code !== 10000) return wx.utils.toast('更新头像失败')
+
+        this.setData({
+          'userInfo.avatar': data.data.url
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  async onLoad() {
+    const {code, data: userInfo} = await wx.http({
+      url: '/userInfo'
+    })
 
+    if(code !== 10000) return wx.utils.toast()
+
+    this.setData({
+      userInfo
+    })
   },
 
   /**
