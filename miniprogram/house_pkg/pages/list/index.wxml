@@ -4,53 +4,13 @@
       <view class="houses">
         <view class="houses-title">房屋信息</view>
         <view class="houses-list">
-          <van-swipe-cell async-close bind:close="swipeClose" right-width="{{ 70 }}">
-            <van-cell-group bind:tap="goDetail" border="{{false}}">
-              <van-cell size="large" title="北京富力桃园">
+          <van-swipe-cell wx:for="{{ houseList }}" async-close bind:close="swipeClose" right-width="{{ 70 }}">
+            <van-cell-group bind:tap="goDetail" border="{{false}}" mark:id="{{item.id}}">
+              <van-cell size="large" title="{{item.point}}">
                 <text class="tag success">审核通过</text>
               </van-cell>
-              <van-cell title="房间号" border="{{false}}" value="1号楼1单元101室" />
-              <van-cell title="业主" border="{{false}}" value="姜晓峰" />
-            </van-cell-group>
-            <view slot="right">删除</view>
-          </van-swipe-cell>
-          <van-swipe-cell async-close bind:close="swipeClose" right-width="{{ 70 }}">
-            <van-cell-group bind:tap="goDetail" border="{{false}}">
-              <van-cell size="large" title="北京富力桃园">
-                <text class="tag info">正在审核</text>
-              </van-cell>
-              <van-cell title="房间号" border="{{false}}" value="1号楼1单元101室" />
-              <van-cell title="业主" border="{{false}}" value="姜晓峰" />
-            </van-cell-group>
-            <view slot="right">删除</view>
-          </van-swipe-cell>
-          <van-swipe-cell async-close bind:close="swipeClose" right-width="{{ 70 }}">
-            <van-cell-group bind:tap="goDetail" border="{{false}}">
-              <van-cell size="large" title="北京富力桃园">
-                <text class="tag fail">审核失败</text>
-              </van-cell>
-              <van-cell title="房间号" border="{{false}}" value="1号楼1单元101室" />
-              <van-cell title="业主" border="{{false}}" value="姜晓峰" />
-            </van-cell-group>
-            <view slot="right">删除</view>
-          </van-swipe-cell>
-          <van-swipe-cell async-close bind:close="swipeClose" right-width="{{ 70 }}">
-            <van-cell-group bind:tap="goDetail" border="{{false}}">
-              <van-cell size="large" title="北京富力桃园">
-                <text class="tag fail">审核失败</text>
-              </van-cell>
-              <van-cell title="房间号" border="{{false}}" value="1号楼1单元101室" />
-              <van-cell title="业主" border="{{false}}" value="姜晓峰" />
-            </van-cell-group>
-            <view slot="right">删除</view>
-          </van-swipe-cell>
-          <van-swipe-cell async-close bind:close="swipeClose" right-width="{{ 70 }}">
-            <van-cell-group bind:tap="goDetail" border="{{false}}">
-              <van-cell size="large" title="北京富力桃园">
-                <text class="tag info">正在审核</text>
-              </van-cell>
-              <van-cell title="房间号" border="{{false}}" value="1号楼1单元101室" />
-              <van-cell title="业主" border="{{false}}" value="姜晓峰" />
+              <van-cell title="房间号" border="{{false}}" value="{{item.building}}{{item.room}}室" />
+              <van-cell title="业主" border="{{false}}" value="{{item.name}}" />
             </van-cell-group>
             <view slot="right">删除</view>
           </van-swipe-cell>
