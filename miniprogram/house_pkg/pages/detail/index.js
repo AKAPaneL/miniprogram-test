@@ -1,9 +1,13 @@
 Page({
   data: {
+    id: '',
     houseDetail: {}
   },
   onLoad({ id }) {
     this.getHouseDetail(id)
+    this.setData({
+      id: id
+    })
   },
   // 根据id获取对应房屋的详情
   async getHouseDetail(id) {
@@ -15,7 +19,7 @@ Page({
   },
   editHouse() {
     wx.navigateTo({
-      url: '/house_pkg/pages/form/index'
+      url: `/house_pkg/pages/form/index?id=${this.data.id}`
     })
   }
 })

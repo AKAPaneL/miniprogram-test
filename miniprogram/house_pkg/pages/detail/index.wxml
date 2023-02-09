@@ -13,10 +13,10 @@
     <view class="id-card">
       <van-cell title="本人身份证照片" />
       <view class="id-card-front">
-        <image class="" src="{{houseDetail.idcardFrontUrl}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{houseDetail.idcardFrontUrl}}" mode="aspectFill " lazy-load="false" binderror="" bindload="" />
       </view>
       <view class="id-card-back">
-        <image class="" src="{{houseDetail.idcardBackUrl}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{houseDetail.idcardBackUrl}}" mode="aspectFill " lazy-load="false" binderror="" bindload="" />
       </view>
     </view>
   </view>
