@@ -68,10 +68,8 @@ Page({
       },
       success: (res) => {
         const { data } = JSON.parse(res.data)
-        const fileArr = this.data.fileList
-        fileArr.push(data)
         this.setData({
-          fileList: fileArr
+          fileList: [...this.data.fileList, data]
         })
       }
     })
@@ -79,7 +77,6 @@ Page({
   // 删除图片
   deleteFile(e) {
     const fileArr = this.data.fileList.filter(item => item.id !== e.detail.file.id)
-    console.log(fileArr);
     this.setData({
       fileList: fileArr
     })
